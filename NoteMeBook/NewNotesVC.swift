@@ -7,27 +7,28 @@
 
 import UIKit
 
-class NewNotesVC: UIViewController {
+class NewNotesVC: UIViewController, UITextViewDelegate {
     
     var mytextView = UITextView()
     let mylabel = UILabel()
-    
     public var completion: ((String, String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupTextView()
-        
-        
-        
+        mytextView.delegate = self
+
         let saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(myRightSideBarButtonItemTapped(_:)))
         self.navigationItem.rightBarButtonItem = saveBarButton
         
+
     }
+    @objc func NameOfSelector() {
+        //Actions when notification is received
+     }
     
     func setupTextView() {
-        
         mytextView = UITextView(frame: CGRect(x: 20, y: 200, width: self.view.bounds.width - 50, height: self.view.bounds.height / 2 + 20))
         mytextView.text = "Введите текст..."
         mytextView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
@@ -35,7 +36,8 @@ class NewNotesVC: UIViewController {
         mytextView.textColor = .white
         mytextView.font = UIFont(name: "Courier", size: 20)
         mytextView.backgroundColor = .systemCyan
-
+        
+        
         self.view.addSubview(mytextView)
     }
     
@@ -67,7 +69,13 @@ class NewNotesVC: UIViewController {
         return currrentData
         
     }
-    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        print("Click")
+
+        
+        return true
+    }
     
     
 }
