@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EntityNotesVC: UIViewController {
+class NewNotesVC: UIViewController {
     
     var mytextView = UITextView()
     let mylabel = UILabel()
@@ -21,13 +21,13 @@ class EntityNotesVC: UIViewController {
         
         
         
-        
         let saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(myRightSideBarButtonItemTapped(_:)))
         self.navigationItem.rightBarButtonItem = saveBarButton
         
     }
     
     func setupTextView() {
+        
         mytextView = UITextView(frame: CGRect(x: 20, y: 200, width: self.view.bounds.width - 50, height: self.view.bounds.height / 2 + 20))
         mytextView.text = "Введите текст..."
         mytextView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
@@ -35,7 +35,7 @@ class EntityNotesVC: UIViewController {
         mytextView.textColor = .white
         mytextView.font = UIFont(name: "Courier", size: 20)
         mytextView.backgroundColor = .systemCyan
-        
+
         self.view.addSubview(mytextView)
     }
     
@@ -69,5 +69,5 @@ class EntityNotesVC: UIViewController {
     }
     
     
-    //core data + BD
+    
 }

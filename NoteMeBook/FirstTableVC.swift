@@ -13,21 +13,21 @@ class FirstTableVC: UITableViewController{
     var tupleData: [(date: String, textdate: String)] = [("4343434", "43434")]
     
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
         self.title = "To Do Me Test"
         let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
         let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.myLeftSideBarButtonItemTapped(_:)))
         self.navigationItem.leftBarButtonItem = leftBarButton
-
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
-
+    
     
     
     @objc func didTapNewNote(_ sender: UIBarButtonItem!){
-        let vc = EntityNotesVC()
+        let vc = NewNotesVC()
         
         vc.title = "Notes"
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -73,11 +73,10 @@ class FirstTableVC: UITableViewController{
         vc.dataText = tuple.date
         vc.text = tuple.textdate
         
+        
         navigationController?.pushViewController(vc, animated: true)
         
     }
-
-    
 }
 
 
