@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		9B84A67829DC23E9008C8D6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A67729DC23E9008C8D6D /* AppDelegate.swift */; };
 		9B84A67A29DC23E9008C8D6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */; };
-		9B84A67C29DC23E9008C8D6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A67B29DC23E9008C8D6D /* ViewController.swift */; };
-		9B84A67F29DC23E9008C8D6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B84A67D29DC23E9008C8D6D /* Main.storyboard */; };
 		9B84A68229DC23E9008C8D6D /* NoteMeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A68029DC23E9008C8D6D /* NoteMeBook.xcdatamodeld */; };
 		9B84A68429DC23EA008C8D6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B84A68329DC23EA008C8D6D /* Assets.xcassets */; };
 		9B84A68729DC23EA008C8D6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B84A68529DC23EA008C8D6D /* LaunchScreen.storyboard */; };
+		9BAEF11329DC2CA200755C52 /* FirstTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */; };
+		9BAEF11729DC2D1300755C52 /* NewNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */; };
+		9BAEF11929DC2D2F00755C52 /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9B84A67429DC23E9008C8D6D /* NoteMeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteMeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B84A67729DC23E9008C8D6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9B84A67B29DC23E9008C8D6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9B84A67E29DC23E9008C8D6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B84A68129DC23E9008C8D6D /* NoteMeBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteMeBook.xcdatamodel; sourceTree = "<group>"; };
 		9B84A68329DC23EA008C8D6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B84A68629DC23EA008C8D6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B84A68829DC23EA008C8D6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableVC.swift; sourceTree = "<group>"; };
+		9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotesVC.swift; sourceTree = "<group>"; };
+		9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +62,11 @@
 			children = (
 				9B84A67729DC23E9008C8D6D /* AppDelegate.swift */,
 				9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */,
-				9B84A67B29DC23E9008C8D6D /* ViewController.swift */,
-				9B84A67D29DC23E9008C8D6D /* Main.storyboard */,
-				9B84A68329DC23EA008C8D6D /* Assets.xcassets */,
+				9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */,
+				9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */,
+				9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */,
 				9B84A68529DC23EA008C8D6D /* LaunchScreen.storyboard */,
+				9B84A68329DC23EA008C8D6D /* Assets.xcassets */,
 				9B84A68829DC23EA008C8D6D /* Info.plist */,
 				9B84A68029DC23E9008C8D6D /* NoteMeBook.xcdatamodeld */,
 			);
@@ -130,7 +133,6 @@
 			files = (
 				9B84A68729DC23EA008C8D6D /* LaunchScreen.storyboard in Resources */,
 				9B84A68429DC23EA008C8D6D /* Assets.xcassets in Resources */,
-				9B84A67F29DC23E9008C8D6D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +143,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B84A67C29DC23E9008C8D6D /* ViewController.swift in Sources */,
 				9B84A67829DC23E9008C8D6D /* AppDelegate.swift in Sources */,
+				9BAEF11929DC2D2F00755C52 /* PreviewVC.swift in Sources */,
 				9B84A68229DC23E9008C8D6D /* NoteMeBook.xcdatamodeld in Sources */,
+				9BAEF11729DC2D1300755C52 /* NewNotesVC.swift in Sources */,
+				9BAEF11329DC2CA200755C52 /* FirstTableVC.swift in Sources */,
 				9B84A67A29DC23E9008C8D6D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,14 +155,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9B84A67D29DC23E9008C8D6D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B84A67E29DC23E9008C8D6D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9B84A68529DC23EA008C8D6D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,9 +292,9 @@
 				INFOPLIST_FILE = NoteMeBook/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,9 +320,9 @@
 				INFOPLIST_FILE = NoteMeBook/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
