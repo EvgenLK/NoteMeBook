@@ -11,11 +11,11 @@ class NewNotesVC: UIViewController  {
     var mytextView = UITextView()
     let mylabel = UILabel()
     public var completion: ((String, String) -> Void)?
-    var myTextViewKB: UITextView!
+//    var myTextViewKB: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myTextViewKB.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+//        myTextViewKB.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
 
         self.view.backgroundColor = .white
         setupTextView()

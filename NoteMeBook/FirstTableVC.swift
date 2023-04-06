@@ -76,6 +76,17 @@ class FirstTableVC: UITableViewController{
         navigationController?.pushViewController(vc, animated: true)
         
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        tableView.beginUpdates()
+        if editingStyle == .delete {
+            self.tupleData.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        tableView.endUpdates()
+    }
+    
 }
 
 
