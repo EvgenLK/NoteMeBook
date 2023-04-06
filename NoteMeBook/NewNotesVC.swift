@@ -7,27 +7,26 @@
 
 import UIKit
 
-class NewNotesVC: UIViewController {
-    
+class NewNotesVC: UIViewController  {
     var mytextView = UITextView()
     let mylabel = UILabel()
-    
     public var completion: ((String, String) -> Void)?
+//    var myTextViewKB: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        myTextViewKB.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+
         self.view.backgroundColor = .white
         setupTextView()
-        
-        
-        
         let saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(myRightSideBarButtonItemTapped(_:)))
         self.navigationItem.rightBarButtonItem = saveBarButton
-        
+    }
+    @objc func tapDone(sender: Any) {
+        self.view.endEditing(true)
     }
     
     func setupTextView() {
-        
         mytextView = UITextView(frame: CGRect(x: 20, y: 200, width: self.view.bounds.width - 50, height: self.view.bounds.height / 2 + 20))
         mytextView.text = "Введите текст..."
         mytextView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
@@ -35,9 +34,13 @@ class NewNotesVC: UIViewController {
         mytextView.textColor = .white
         mytextView.font = UIFont(name: "Courier", size: 20)
         mytextView.backgroundColor = .systemCyan
-
+        mytextView.becomeFirstResponder()
+        
         self.view.addSubview(mytextView)
+        
     }
+    
+
     
     @objc func myRightSideBarButtonItemTapped(_ sender: UIBarButtonItem!){
         if let data = mytextView.text {
@@ -67,7 +70,13 @@ class NewNotesVC: UIViewController {
         return currrentData
         
     }
-    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        print("Click")
+
+        
+        return true
+    }
     
     
 }
