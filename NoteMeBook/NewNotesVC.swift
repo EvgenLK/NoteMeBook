@@ -10,6 +10,7 @@ import UIKit
 class NewNotesVC: UIViewController  {
     var mytextView = UITextView()
     let mylabel = UILabel()
+    var scrollView = UIScrollView()
     public var completion: ((String, String) -> Void)?
     
     override func viewDidLoad() {
@@ -23,6 +24,9 @@ class NewNotesVC: UIViewController  {
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
+    
+
+    
     
     func setupTextView() {
         mytextView = UITextView(frame: CGRect(x: 20, y: 200, width: self.view.bounds.width - 50, height: self.view.bounds.height / 2 + 20))
@@ -43,7 +47,7 @@ class NewNotesVC: UIViewController  {
     @objc func myRightSideBarButtonItemTapped(_ sender: UIBarButtonItem!){
         if let data = mytextView.text {
             if data != "" {
-                completion?(data, currentData())
+                completion?(currentData(), data)
             }
         }else {
             alertController()
