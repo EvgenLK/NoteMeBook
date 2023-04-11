@@ -135,19 +135,30 @@ class FirstTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
-            tableView.beginUpdates()
-            if editingStyle == .delete {
-                
-                self.tupleData.remove(at: indexPath.row)
-                print()
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                print("Tap", indexPath.row)
-            }
-            tableView.endUpdates()
-        }
         
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate?.persistentContainer.viewContext
+        
+        
+        tableView.beginUpdates()
+        if editingStyle == .delete {
+            
+            let eventDel = tupleData[indexPath.row]
+            self.tupleData.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            context?.delete(eventDel)
+            
+            do{
+                try context!.save()
+            }catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+        tableView.endUpdates()
     }
+}
+
+    
 
 
 
