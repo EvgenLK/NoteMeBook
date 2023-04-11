@@ -38,7 +38,7 @@ class FirstTableVC: UITableViewController {
     func setupBarButton() {
         let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
-        let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
+        let leftBarButton = UIBarButtonItem(title: "All Delete", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
         self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
