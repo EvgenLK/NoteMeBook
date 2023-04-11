@@ -7,15 +7,14 @@
 
 import UIKit
 
-class NewNotesVC: UIViewController  {
+class NewNotesVC: UIViewController, UITextViewDelegate{
     var mytextView = UITextView()
     let mylabel = UILabel()
+    var scrollView = UIScrollView()
     public var completion: ((String, String) -> Void)?
-//    var myTextViewKB: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        myTextViewKB.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
 
         self.view.backgroundColor = .white
         setupTextView()
@@ -27,8 +26,10 @@ class NewNotesVC: UIViewController  {
     }
     
     func setupTextView() {
+       
         mytextView = UITextView(frame: CGRect(x: 20, y: 200, width: self.view.bounds.width - 50, height: self.view.bounds.height / 2 + 20))
-        mytextView.text = "Введите текст..."
+        mytextView.text = "Placeholder"
+        mytextView.textColor = UIColor.lightGray
         mytextView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         mytextView.layer.cornerRadius = 10
         mytextView.textColor = .white
@@ -45,7 +46,7 @@ class NewNotesVC: UIViewController  {
     @objc func myRightSideBarButtonItemTapped(_ sender: UIBarButtonItem!){
         if let data = mytextView.text {
             if data != "" {
-                completion?(data, currentData())
+                completion?(currentData(), data)
             }
         }else {
             alertController()
@@ -70,13 +71,7 @@ class NewNotesVC: UIViewController  {
         return currrentData
         
     }
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
-        print("Click")
-
-        
-        return true
-    }
-    
     
 }
+
+

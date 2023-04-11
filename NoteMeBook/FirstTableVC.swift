@@ -6,40 +6,92 @@
 //
 
 import UIKit
+import CoreData
 
-class FirstTableVC: UITableViewController{
+class FirstTableVC: UITableViewController {
     
     let addBarButton = UIBarButtonItem()
-    var tupleData: [(date: String, textdate: String)] = [("4343434", "43434")]
+    var tupleData: [EntityDataNotes] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
+        
+        do{
+            tupleData = try context.fetch(featchRequest)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        setupBarButton()
         self.title = "To Do Me Test"
-        let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.myLeftSideBarButtonItemTapped(_:)))
-        self.navigationItem.leftBarButtonItem = leftBarButton
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
+    func setupBarButton() {
+        let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
+        self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    func saveTupleData(data: String, textData: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "EntityDataNotes", in: context) else {return}
+        
+        let tupleDataObject = EntityDataNotes(entity: entity, insertInto: context)
+        tupleDataObject.date = data
+        tupleDataObject.text = textData
+        
+        do{
+            try context.save()
+            tupleData.append(tupleDataObject)
+            
+        }catch _ as NSError {
+            
+        }
+    }
     
     
     @objc func didTapNewNote(_ sender: UIBarButtonItem!){
-        let vc = NewNotesVC()
         
+        let vc = NewNotesVC()
         vc.title = "Notes"
         vc.navigationItem.largeTitleDisplayMode = .never
-        vc.completion = { data, date in
+        vc.completion = { data, text in
             self.navigationController?.popViewController(animated: true)
-            self.tupleData.append((date: data, textdate: date))
+            self.saveTupleData(data: data, textData: text)
             self.tableView.reloadData()
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    @objc func myLeftSideBarButtonItemTapped(_ sender: UIBarButtonItem!){
-        print("myLeftSideBarButtonItemTapped")
+    @objc func deleteTapNotes(_ sender: UIBarButtonItem!){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
+        
+        if let tupleData = try? context.fetch(featchRequest) {
+            
+            for data in tupleData {
+                context.delete(data)
+            }
+        }
+        do{
+            try context.save()
+        }catch _ as NSError{
+            
+        }
+        tableView.reloadData()
     }
     
     
@@ -56,7 +108,9 @@ class FirstTableVC: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = tupleData[indexPath.row].textdate
+        let tupleRow = tupleData[indexPath.row]
+        
+        cell.textLabel?.text = tupleRow.date
         return cell
         
     }
@@ -65,29 +119,35 @@ class FirstTableVC: UITableViewController{
         tableView.deselectRow(at: indexPath, animated: true)
         
         let tuple = tupleData[indexPath.row]
-        
-        let vc = PreviewVC()
-        vc.navigationItem.largeTitleDisplayMode = .never
-        vc.title = "Note"
-        vc.dataText = tuple.date
-        vc.text = tuple.textdate
-        
-        
-        navigationController?.pushViewController(vc, animated: true)
-        
+        if tuple.date != nil {
+            
+            let vc = PreviewVC()
+            vc.navigationItem.largeTitleDisplayMode = .never
+            vc.title = "Note"
+            vc.dataText = tuple.date
+            vc.text = tuple.text
+            navigationController?.pushViewController(vc, animated: true)
+            
+        } else {
+            print("Тут пусто")
+            tableView.reloadData()
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        tableView.beginUpdates()
-        if editingStyle == .delete {
-            self.tupleData.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        tableView.endUpdates()
-    }
     
-}
+            tableView.beginUpdates()
+            if editingStyle == .delete {
+                
+                self.tupleData.remove(at: indexPath.row)
+                print()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                print("Tap", indexPath.row)
+            }
+            tableView.endUpdates()
+        }
+        
+    }
 
 
 

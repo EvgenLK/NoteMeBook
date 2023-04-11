@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B56271F29DE319E0075A50D /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B56271E29DE319E0075A50D /* TextViewDelegate.swift */; };
 		9B84A67829DC23E9008C8D6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A67729DC23E9008C8D6D /* AppDelegate.swift */; };
 		9B84A67A29DC23E9008C8D6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */; };
 		9B84A68229DC23E9008C8D6D /* NoteMeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A68029DC23E9008C8D6D /* NoteMeBook.xcdatamodeld */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B56271E29DE319E0075A50D /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		9B84A67429DC23E9008C8D6D /* NoteMeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteMeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B84A67729DC23E9008C8D6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 				9B84A67729DC23E9008C8D6D /* AppDelegate.swift */,
 				9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */,
 				9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */,
-				9B56271E29DE319E0075A50D /* TextViewDelegate.swift */,
 				9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */,
 				9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */,
 				9B84A68529DC23EA008C8D6D /* LaunchScreen.storyboard */,
@@ -147,7 +144,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B84A67829DC23E9008C8D6D /* AppDelegate.swift in Sources */,
-				9B56271F29DE319E0075A50D /* TextViewDelegate.swift in Sources */,
 				9BAEF11929DC2D2F00755C52 /* PreviewVC.swift in Sources */,
 				9B84A68229DC23E9008C8D6D /* NoteMeBook.xcdatamodeld in Sources */,
 				9BAEF11729DC2D1300755C52 /* NewNotesVC.swift in Sources */,
