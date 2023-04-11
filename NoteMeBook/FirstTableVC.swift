@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class FirstTableVC: UITableViewController {
-
+    
     let addBarButton = UIBarButtonItem()
     var tupleData: [EntityDataNotes] = []
     
@@ -25,6 +25,7 @@ class FirstTableVC: UITableViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ class FirstTableVC: UITableViewController {
     func setupBarButton() {
         let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
-        let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.myLeftSideBarButtonItemTapped(_:)))
+        let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
         self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
@@ -63,7 +64,6 @@ class FirstTableVC: UITableViewController {
     
     @objc func didTapNewNote(_ sender: UIBarButtonItem!){
         
-        
         let vc = NewNotesVC()
         vc.title = "Notes"
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -74,12 +74,12 @@ class FirstTableVC: UITableViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    @objc func myLeftSideBarButtonItemTapped(_ sender: UIBarButtonItem!){
+    @objc func deleteTapNotes(_ sender: UIBarButtonItem!){
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        
         let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
+        
         if let tupleData = try? context.fetch(featchRequest) {
             
             for data in tupleData {
@@ -120,7 +120,7 @@ class FirstTableVC: UITableViewController {
         
         let tuple = tupleData[indexPath.row]
         if tuple.date != nil {
-
+            
             let vc = PreviewVC()
             vc.navigationItem.largeTitleDisplayMode = .never
             vc.title = "Note"
@@ -135,16 +135,19 @@ class FirstTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        tableView.beginUpdates()
-        if editingStyle == .delete {
-            self.tupleData.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        tableView.endUpdates()
-    }
     
-}
+            tableView.beginUpdates()
+            if editingStyle == .delete {
+                
+                self.tupleData.remove(at: indexPath.row)
+                print()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                print("Tap", indexPath.row)
+            }
+            tableView.endUpdates()
+        }
+        
+    }
 
 
 

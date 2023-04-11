@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewNotesVC: UIViewController  {
+class NewNotesVC: UIViewController, UITextViewDelegate{
     var mytextView = UITextView()
     let mylabel = UILabel()
     var scrollView = UIScrollView()
@@ -25,12 +25,11 @@ class NewNotesVC: UIViewController  {
         self.view.endEditing(true)
     }
     
-
-    
-    
     func setupTextView() {
+       
         mytextView = UITextView(frame: CGRect(x: 20, y: 200, width: self.view.bounds.width - 50, height: self.view.bounds.height / 2 + 20))
-        mytextView.text = "Введите текст..."
+        mytextView.text = "Placeholder"
+        mytextView.textColor = UIColor.lightGray
         mytextView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         mytextView.layer.cornerRadius = 10
         mytextView.textColor = .white
@@ -72,13 +71,7 @@ class NewNotesVC: UIViewController  {
         return currrentData
         
     }
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
-        print("Click")
-
-        
-        return true
-    }
-    
     
 }
+
+
