@@ -33,9 +33,9 @@ class PreviewVC: UIViewController {
         mytextView.text = "Введите текст..."
         mytextView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         mytextView.layer.cornerRadius = 10
-        mytextView.textColor = .white
+        mytextView.textColor = .black
         mytextView.font = UIFont(name: "Courier", size: 20)
-        mytextView.backgroundColor = .systemCyan
+        mytextView.backgroundColor = .systemGray6
         mytextView.isSelectable = false
         self.view.addSubview(mytextView)
     }

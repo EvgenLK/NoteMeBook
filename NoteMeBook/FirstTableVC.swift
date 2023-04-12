@@ -35,6 +35,7 @@ class FirstTableVC: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
+    
     func setupBarButton() {
         let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
