@@ -21,10 +21,8 @@ class PreviewVC: UIViewController {
         setupTextView()
         setupLabel()
         view.backgroundColor = .white
-
         dateLabel.text = dataText
         mytextView.text = text
-        
         setupLabel()
     }
     
