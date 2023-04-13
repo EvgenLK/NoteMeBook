@@ -8,7 +8,10 @@
 import UIKit
 import CoreData
 
-class FirstTableVC: UITableViewController {
+class FirstTableVC: UITableViewController  {
+    
+    let dateTextField = UITextField()
+    let textTextField = UITextField()
     
     let addBarButton = UIBarButtonItem()
     var tupleData: [EntityDataNotes] = []
@@ -26,13 +29,16 @@ class FirstTableVC: UITableViewController {
             print(error.localizedDescription)
         }
         tableView.reloadData()
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBarButton()
         self.title = "To Do Me Test"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.dataSource = self
     }
     
     
@@ -107,11 +113,12 @@ class FirstTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        let tupleRow = tupleData[indexPath.row]
         
-        cell.textLabel?.text = tupleRow.date
+        cell.mylabelDate.text = tupleData[indexPath.row].date
+        cell.mylabelText.text = tupleData[indexPath.row].text
+        
         return cell
         
     }
@@ -159,7 +166,28 @@ class FirstTableVC: UITableViewController {
     }
 }
 
-    
 
+class CustomCell: UITableViewCell {
+    let mylabelDate = UILabel()
+    let mylabelText = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        addSubview(mylabelDate)
+        addSubview(mylabelText)
+        
+        mylabelDate.frame = CGRect(x: 10, y: 10, width: 100, height: 20)
+        mylabelText.frame = CGRect(x: 100, y: 10, width: self.bounds.width - 10 , height: 20)
+
+        
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
 
 
