@@ -12,6 +12,7 @@
 		9B84A68229DC23E9008C8D6D /* NoteMeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A68029DC23E9008C8D6D /* NoteMeBook.xcdatamodeld */; };
 		9B84A68429DC23EA008C8D6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B84A68329DC23EA008C8D6D /* Assets.xcassets */; };
 		9B84A68729DC23EA008C8D6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B84A68529DC23EA008C8D6D /* LaunchScreen.storyboard */; };
+		9B94D64E29E98CC100AC52DC /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B94D64D29E98CC100AC52DC /* CustomTableViewCell.swift */; };
 		9BAEF11329DC2CA200755C52 /* FirstTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */; };
 		9BAEF11729DC2D1300755C52 /* NewNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */; };
 		9BAEF11929DC2D2F00755C52 /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */; };
@@ -25,6 +26,7 @@
 		9B84A68329DC23EA008C8D6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B84A68629DC23EA008C8D6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B84A68829DC23EA008C8D6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B94D64D29E98CC100AC52DC /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableVC.swift; sourceTree = "<group>"; };
 		9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotesVC.swift; sourceTree = "<group>"; };
 		9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				9B84A67729DC23E9008C8D6D /* AppDelegate.swift */,
 				9B84A67929DC23E9008C8D6D /* SceneDelegate.swift */,
 				9BAEF11229DC2CA200755C52 /* FirstTableVC.swift */,
+				9B94D64D29E98CC100AC52DC /* CustomTableViewCell.swift */,
 				9BAEF11629DC2D1300755C52 /* NewNotesVC.swift */,
 				9BAEF11829DC2D2F00755C52 /* PreviewVC.swift */,
 				9B84A68529DC23EA008C8D6D /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 				9B84A67829DC23E9008C8D6D /* AppDelegate.swift in Sources */,
 				9BAEF11929DC2D2F00755C52 /* PreviewVC.swift in Sources */,
 				9B84A68229DC23E9008C8D6D /* NoteMeBook.xcdatamodeld in Sources */,
+				9B94D64E29E98CC100AC52DC /* CustomTableViewCell.swift in Sources */,
 				9BAEF11729DC2D1300755C52 /* NewNotesVC.swift in Sources */,
 				9BAEF11329DC2CA200755C52 /* FirstTableVC.swift in Sources */,
 				9B84A67A29DC23E9008C8D6D /* SceneDelegate.swift in Sources */,

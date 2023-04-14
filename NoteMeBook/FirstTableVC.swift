@@ -37,7 +37,7 @@ class FirstTableVC: UITableViewController  {
         super.viewDidLoad()
         setupBarButton()
         self.title = "To Do Me Test"
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
     }
     
@@ -113,7 +113,7 @@ class FirstTableVC: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
         
         cell.mylabelDate.text = tupleData[indexPath.row].date
@@ -167,27 +167,6 @@ class FirstTableVC: UITableViewController  {
 }
 
 
-class CustomCell: UITableViewCell {
-    let mylabelDate = UILabel()
-    let mylabelText = UILabel()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        addSubview(mylabelDate)
-        addSubview(mylabelText)
-        
-        mylabelDate.frame = CGRect(x: 10, y: 10, width: 100, height: 20)
-        mylabelText.frame = CGRect(x: 100, y: 10, width: self.bounds.width - 10 , height: 20)
 
-        
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
 
 
