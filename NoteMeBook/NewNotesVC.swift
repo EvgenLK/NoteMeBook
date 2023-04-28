@@ -12,7 +12,7 @@ class NewNotesVC: UIViewController{
     let mylabel = UILabel()
     var scrollView = UIScrollView()
     public var completion: ((String, String) -> Void)?
-    let placeHolderText = "Write text please..."
+    let placeHolderText = "Placeholder text ..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +39,17 @@ class NewNotesVC: UIViewController{
         
     }
     
-
-    
     @objc func myRightSideBarButtonItemTapped(_ sender: UIBarButtonItem!){
         if let data = mytextView.text {
-            if data != "" {
+            if data != ""  && data != placeHolderText {
                 completion?(currentData(), data)
+            }else{
+                alertController()
             }
-        }else {
-            alertController()
         }
-        
     }
     func alertController() {
-        let alert = UIAlertController(title: "Внимание ошибка", message: "Введите текст заметки", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Input error", message: "Enter the text of the note", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

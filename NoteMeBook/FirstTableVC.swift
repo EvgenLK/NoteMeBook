@@ -36,7 +36,7 @@ class FirstTableVC: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBarButton()
-        self.title = "To Do Me Test"
+        self.title = "To Do Me"
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
     }
@@ -45,7 +45,7 @@ class FirstTableVC: UITableViewController  {
     func setupBarButton() {
         let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
-        let leftBarButton = UIBarButtonItem(title: "All Delete", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
+        let leftBarButton = UIBarButtonItem(title: "Delete all", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
         self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
@@ -83,22 +83,32 @@ class FirstTableVC: UITableViewController  {
     }
     @objc func deleteTapNotes(_ sender: UIBarButtonItem!){
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
+        alertController()
         
-        if let tupleData = try? context.fetch(featchRequest) {
+    }
+    
+    func alertController() {
+        let alert = UIAlertController(title: "Delete all cells?", message: "After deleting all the cells will disappear.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: { (action) in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
             
-            for data in tupleData {
-                context.delete(data)
+            if let tupleData = try? context.fetch(featchRequest) {
+                
+                for data in tupleData {
+                    context.delete(data)
+                }
             }
-        }
-        do{
-            try context.save()
-        }catch _ as NSError{
-            
-        }
-        tableView.reloadData()
+            do{
+                try context.save()
+            }catch _ as NSError{
+                
+            }
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
