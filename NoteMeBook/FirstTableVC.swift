@@ -16,6 +16,7 @@ class FirstTableVC: UITableViewController  {
     let addBarButton = UIBarButtonItem()
     var tupleData: [EntityDataNotes] = []
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -30,7 +31,6 @@ class FirstTableVC: UITableViewController  {
         }
         tableView.reloadData()
         
-        
     }
     
     override func viewDidLoad() {
@@ -39,14 +39,43 @@ class FirstTableVC: UITableViewController  {
         self.title = "To Do Me"
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
+
     }
     
+
     
     func setupBarButton() {
-        let rightBarButton = UIBarButtonItem(title: "➕", style: .plain, target: self, action: #selector(didTapNewNote(_:)))
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        let iconImageRevers = UIImage(named: "arrow.up.arrow.down.circle.fill")
+        let iconImagePlus = UIImage(named: "plus.circle.fill")
+        
+        
+        let rightBarButton = UIBarButtonItem(image: iconImagePlus, style: .plain, target: self, action: #selector(didTapNewNote(_:)))
+        
         let leftBarButton = UIBarButtonItem(title: "Delete all", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.deleteTapNotes(_:)))
         self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        let reversBarButton = UIBarButtonItem(image: iconImageRevers, style: UIBarButtonItem.Style.done, target: self, action: #selector(sortedData))
+        
+        self.navigationItem.rightBarButtonItems = [rightBarButton, reversBarButton]
+    }
+    
+    @objc func sortedData() {
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
+        
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        featchRequest.sortDescriptors = [sort]
+        
+        do{
+            tupleData = try! context.fetch(featchRequest)
+            
+            try context.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        tableView.reloadData()
     }
     
     func saveTupleData(data: String, textData: String) {
@@ -62,11 +91,12 @@ class FirstTableVC: UITableViewController  {
         do{
             try context.save()
             tupleData.append(tupleDataObject)
-            
+
         }catch _ as NSError {
             
         }
     }
+    
     
     
     @objc func didTapNewNote(_ sender: UIBarButtonItem!){
