@@ -41,12 +41,12 @@ print("")
     
 1. num1
 2. num2
-  2.1. num 2.1
-  2.2. num 2.2
+  2.1.num 2.1
+  2.2.num 2.2
  
  
 - [X] One
-[ ] Two
+ - [ ] Two
 
 https://vk.com
 
