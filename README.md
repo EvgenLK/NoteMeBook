@@ -10,7 +10,7 @@ Name - Note me book.
 
 ## Overview
 - Written in Swift
-- Uses both UIKit.
+- Uses both UIKit, CoreData.
 - No External Dependencies
 - Pagination for data
 - Runs vertically only
