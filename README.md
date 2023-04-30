@@ -12,7 +12,6 @@ Name - Note me book.
 - Written in Swift
 - Uses both UIKit, CoreData.
 - No External Dependencies
-- Pagination for data
 - Runs vertically only
 - Only Iphone
 - Built in Xcode 14
