@@ -18,4 +18,4 @@ __Text__
 
 ~text~
 
-:white_check_marl:
+:white_check_mark:
