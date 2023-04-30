@@ -58,4 +58,4 @@ https://vk.com
 
 | LEFT | CENTER | RIGHT |
 |------|--------|-------|
- TEXT  | TEXT   | TEXT  |
+| TEXT  | TEXT   | TEXT  |
