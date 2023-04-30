@@ -15,7 +15,7 @@ class FirstTableVC: UITableViewController  {
     
     let addBarButton = UIBarButtonItem()
     var tupleData: [EntityDataNotes] = []
-    
+    var sortedClick = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,14 +24,32 @@ class FirstTableVC: UITableViewController  {
         let context = appDelegate.persistentContainer.viewContext
         let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
         
-        do{
-            tupleData = try context.fetch(featchRequest)
-        } catch let error as NSError {
-            print(error.localizedDescription)
+        if sortedClick == true {
+            
+            let sort = NSSortDescriptor(key: "date", ascending: false)
+            featchRequest.sortDescriptors = [sort]
+            
+            do{
+                tupleData = try! context.fetch(featchRequest)
+                
+                try context.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            tableView.reloadData()
+        }else{
+            
+            
+            
+            do{
+                tupleData = try context.fetch(featchRequest)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            tableView.reloadData()
         }
-        tableView.reloadData()
-        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,23 +77,17 @@ class FirstTableVC: UITableViewController  {
         self.navigationItem.rightBarButtonItems = [rightBarButton, reversBarButton]
     }
     
-    @objc func sortedData() {
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let featchRequest: NSFetchRequest<EntityDataNotes> = EntityDataNotes.fetchRequest()
+    @objc func sortedData() -> Bool{
         
-        let sort = NSSortDescriptor(key: "date", ascending: false)
-        featchRequest.sortDescriptors = [sort]
-        
-        do{
-            tupleData = try! context.fetch(featchRequest)
+        if sortedClick == false {
+            sortedClick = true
+        }else {
+            sortedClick = false
             
-            try context.save()
-        } catch let error as NSError {
-            print(error.localizedDescription)
         }
-        tableView.reloadData()
+        viewWillAppear(true)
+        return sortedClick
+
     }
     
     func saveTupleData(data: String, textData: String) {
